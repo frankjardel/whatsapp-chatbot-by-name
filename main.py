@@ -3,12 +3,17 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.keys import Keys
 import time
 
-driver = webdriver.Chrome(ChromeDriverManager().install())
+chrome_options = webdriver.ChromeOptions()
+chrome_options.add_argument('--user-data-dir=./User_Data')
+chrome_options.add_experimental_option("useAutomationExtension", False)
+chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
+driver = webdriver.Chrome(ChromeDriverManager().install(), options=chrome_options)
 driver.get('https://web.whatsapp.com/')
+
 time.sleep(30)
 
-contacts = ['Rocardio', 'Jardel Frank']
-message = 'Hello World!'
+contacts = ['Rocardio']
+message = 'Eu sou Rocardio, eu vou realizar todas as suas fantasias: pagar suas contas, coçar suas costas, encher o tanque e calibrar os pneus.. hoje eu tô pro crime. #truecrime'
 
 
 def search_contact(contact):
